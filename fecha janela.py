@@ -3,8 +3,8 @@ import PySimpleGUI as sg
 """
     Demo_Close_Attempted_Event
 
-    Catches if a window close was tried by user (click "X") and confirms with a popup.
-    Requires PySimpleGUI 4.33.0 and later
+    Detecta se o usuário tentou fechar uma janela (clique em "X") e confirma com um pop-up.
+    Requer PySimpleGUI 4.33.0 e posterior
 
     Copyright 2021 PySimpleGUI Inc.
 """
