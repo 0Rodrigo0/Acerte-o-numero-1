@@ -3,14 +3,12 @@
 
 import random
 import PySimpleGUI as sg
-from PySimpleGUI.PySimpleGUI import WINDOW_CLOSED, WIN_CLOSED
-
 
 class ChuteONumero:
     def __init__(self):
         self.valor_aleatorio = 0
         self.valor_minimo = 1
-        self.valor_maximo = 2
+        self.valor_maximo = 5
         self.tentar_novamente = True
     
     def Iniciar(self):
@@ -18,11 +16,11 @@ class ChuteONumero:
         layout = [
             [sg.Text('Seu Chute',size=(39,0))],
             [sg.Input(size=(18,0),key='ValorChute')],
-            [sg.Button('Chutar!')],
+            [sg.Button('Chutar!'), sg.Button('Sair')],
             [sg.Output(size=(39,10))]
         ]
         # criar uma janela
-        self.janela = sg.Window('Chute o numero!',layout=layout)
+        self.janela = sg.Window('Chute o numero!',layout=layout, enable_close_attempted_event=True, finalize=True)
         self.GerarNumeroAleatorio()
         try:
             while True:
@@ -41,11 +39,14 @@ class ChuteONumero:
                         if int(self.valor_do_chute) == self.valor_aleatorio:
                             self.tentar_novamente = False
                             print('PARABÉNS VOCÊ ACERTOU!!')
-                            break
-                                                
+                elif self.evento == sg.WINDOW_CLOSE_ATTEMPTED_EVENT:
+                    if sg.popup_yes_no('Do yuou really want to exit?') == 'Yes':
+                        break         
+                                                                 
         except:
             print('Favor digitar apenas números!')
             self.Iniciar()
+            
     def GerarNumeroAleatorio(self):
         self.valor_aleatorio =  random.randint(self.valor_minimo,self.valor_maximo)
 
