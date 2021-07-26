@@ -1,14 +1,16 @@
 # Projeto - Acerte o Numero: Programa para acertar o numero
 # 
 
-import random 
+import random
 import PySimpleGUI as sg
+from PySimpleGUI.PySimpleGUI import WINDOW_CLOSED, WIN_CLOSED
+
 
 class ChuteONumero:
     def __init__(self):
         self.valor_aleatorio = 0
         self.valor_minimo = 1
-        self.valor_maximo = 10
+        self.valor_maximo = 2
         self.tentar_novamente = True
     
     def Iniciar(self):
@@ -40,11 +42,10 @@ class ChuteONumero:
                             self.tentar_novamente = False
                             print('PARABÉNS VOCÊ ACERTOU!!')
                             break
+                                                
         except:
             print('Favor digitar apenas números!')
             self.Iniciar()
-            
-
     def GerarNumeroAleatorio(self):
         self.valor_aleatorio =  random.randint(self.valor_minimo,self.valor_maximo)
 
