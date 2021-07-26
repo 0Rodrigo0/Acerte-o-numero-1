@@ -41,7 +41,9 @@ class ChuteONumero:
                             print('PARABÉNS VOCÊ ACERTOU!!')
                 elif self.evento == sg.WINDOW_CLOSE_ATTEMPTED_EVENT:
                     if sg.popup_yes_no('Do yuou really want to exit?') == 'Yes':
-                        break         
+                        break
+                if self.evento in (sg.WIN_CLOSED, 'Sair'):
+                    break         
                                                                  
         except:
             print('Favor digitar apenas números!')
@@ -52,3 +54,4 @@ class ChuteONumero:
 
 chute = ChuteONumero()
 chute.Iniciar()
+window.close()
